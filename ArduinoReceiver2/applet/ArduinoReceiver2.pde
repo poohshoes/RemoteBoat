@@ -21,10 +21,22 @@
 
 #define rudderServo 0
 
+#define rudderServoId '0'
+#define topsailHoistMotorId '1'
+
 #define minServoPosition 900
 #define maxServoPosition 4700
 
+#define topsailHoistMotorLowPin 3
+#define topsailHoistMotorHighPin 2
+
 void setup(){
+  
+  //pinMode(topsailHoistMotorLowPin, OUTPUT);
+  //pinMode(topsailHoistMotorHighPin, OUTPUT);
+  
+  //digitalWrite(topsailHoistMotorLowPin, HIGH);
+  //digitalWrite(topsailHoistMotorHighPin, HIGH);
   
   setServoParameters();
   setServoSpeed();
@@ -85,9 +97,34 @@ void loop(){
        case '0':
          setServoPosition(data[1], data[2]);
          break;
+       //case topsailHoistMotorId:
+         //setTopsailHoistMotorMotion(data[1], data[2]);
+         //break;
      }    
       
     }while(!Mirf.rxFifoEmpty());
+  }
+}
+
+void setTopsailHoistMotorMotion(byte onOff, byte dir)
+{
+  if(onOff == 'f')
+  {
+    digitalWrite(topsailHoistMotorLowPin, HIGH);
+    digitalWrite(topsailHoistMotorHighPin, HIGH);
+  }
+  else
+  {
+    if(dir == 'l')
+    {
+      digitalWrite(topsailHoistMotorLowPin, HIGH);
+      digitalWrite(topsailHoistMotorHighPin, LOW);
+    }
+    else
+    {
+      digitalWrite(topsailHoistMotorLowPin, LOW);
+      digitalWrite(topsailHoistMotorHighPin, HIGH);
+    }
   }
 }
 

@@ -39,11 +39,11 @@ void setServoParameters();
 void setServoSpeed();
 void setup(){
   
-  //pinMode(topsailHoistMotorLowPin, OUTPUT);
-  //pinMode(topsailHoistMotorHighPin, OUTPUT);
+  pinMode(topsailHoistMotorLowPin, OUTPUT);
+  pinMode(topsailHoistMotorHighPin, OUTPUT);
   
-  //digitalWrite(topsailHoistMotorLowPin, HIGH);
-  //digitalWrite(topsailHoistMotorHighPin, HIGH);
+  digitalWrite(topsailHoistMotorLowPin, HIGH);
+  digitalWrite(topsailHoistMotorHighPin, HIGH);
   
   setServoParameters();
   setServoSpeed();
@@ -104,9 +104,9 @@ void loop(){
        case '0':
          setServoPosition(data[1], data[2]);
          break;
-       //case topsailHoistMotorId:
-         //setTopsailHoistMotorMotion(data[1], data[2]);
-         //break;
+       case topsailHoistMotorId:
+         setTopsailHoistMotorMotion(data[1], data[2]);
+         break;
      }    
       
     }while(!Mirf.rxFifoEmpty());

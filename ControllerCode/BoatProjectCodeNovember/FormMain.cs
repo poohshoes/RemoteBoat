@@ -13,7 +13,8 @@ namespace BoatProjectCodeNovember
 {
     public partial class FormMain : Form
     {
-        enum destinations { rudder = 0 };
+        const char rudderId = '0';
+        const char topsailHoistId = '1';
 
         SerialPort port;
 
@@ -72,14 +73,14 @@ namespace BoatProjectCodeNovember
             pos_hi = (byte)(temp >> 7);     //shift bits 8 thru 13 by 7
             pos_low = (byte)((uint)trackBarRudder.Value & 0x7f); //get lower 7 bits of position
 
-            sendMessage(destinations.rudder, (char)pos_hi, (char)pos_low);
+            sendMessage(rudderId, (char)pos_hi, (char)pos_low);
         }
 
-        private void sendMessage(destinations destinationId, char command1, char command2)
+        private void sendMessage(char destinationId, char command1, char command2)
         {
             if (port != null && port.IsOpen)
             {
-                string message = "%" + "0"
+                string message = "%" + destinationId
                     + command1 + command2;
 
                 if (message.Length != 4)
@@ -89,35 +90,47 @@ namespace BoatProjectCodeNovember
             }
         }
 
-        private char destinationChar(destinations destinationId) 
+        private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
-            return Convert.ToChar((int)(char)destinationId);
-        }
+            int change = Convert.ToInt32(numericUpDownRudderSpeed.Value);
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (port != null && port.IsOpen)
+            if (e.KeyCode == Keys.Left)
             {
-                string message = "%0" + Convert.ToChar(07) + Convert.ToChar(04);
-
-                if (message.Length != 4)
-                    throw new Exception("Message Length is not Four Characters!");
-
-                port.Write(message);
+                if (trackBarRudder.Value - change < 900)
+                    trackBarRudder.Value = 900;
+                else
+                    trackBarRudder.Value -= Convert.ToInt32(change);
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (port != null && port.IsOpen)
+            else if (e.KeyCode == Keys.Right)
             {
-                string message = "%0$\\";
-
-                if (message.Length != 4)
-                    throw new Exception("Message Length is not Four Characters!");
-
-                port.Write(message);
+                if (trackBarRudder.Value + change > 4700)
+                    trackBarRudder.Value = 4700;
+                else
+                    trackBarRudder.Value += Convert.ToInt32(change);
             }
+            else if (e.KeyCode == Keys.Space)
+                trackBarRudder.Value = ((trackBarRudder.Maximum - trackBarRudder.Minimum) / 2) + trackBarRudder.Minimum;
+            else if (e.KeyCode == Keys.E) 
+            {
+                sendMessage(topsailHoistId, 'n', 'l');
+            }
+            else if (e.KeyCode == Keys.D)
+            {
+                sendMessage(topsailHoistId, 'n', 'r');
+            }
+
         }
+
+        private void FormMain_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.E) 
+            {
+                sendMessage(topsailHoistId, 'f', 'l');
+            }
+            else if (e.KeyCode == Keys.D) 
+            {
+                sendMessage(topsailHoistId, 'f', 'l');
+            }
+        }     
     }
 }

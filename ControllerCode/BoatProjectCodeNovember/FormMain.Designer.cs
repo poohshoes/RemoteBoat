@@ -33,10 +33,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.trackBarRudder = new System.Windows.Forms.TrackBar();
-            this.maskedTextBoxInitialRudderDelay = new System.Windows.Forms.MaskedTextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.maskedTextBoxConsecutiveRudderDelay = new System.Windows.Forms.MaskedTextBox();
             this.buttonSheetOut = new System.Windows.Forms.Button();
             this.buttonSheetIn = new System.Windows.Forms.Button();
             this.buttonTrimIn = new System.Windows.Forms.Button();
@@ -51,9 +48,9 @@
             this.buttonKeelPort = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.buttonConnect = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.numericUpDownRudderSpeed = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarRudder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRudderSpeed)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -94,7 +91,7 @@
             // 
             // trackBarRudder
             // 
-            this.trackBarRudder.LargeChange = 1;
+            this.trackBarRudder.LargeChange = 50;
             this.trackBarRudder.Location = new System.Drawing.Point(7, 98);
             this.trackBarRudder.Maximum = 4700;
             this.trackBarRudder.Minimum = 900;
@@ -105,37 +102,14 @@
             this.trackBarRudder.Value = 2700;
             this.trackBarRudder.ValueChanged += new System.EventHandler(this.trackBarRudder_ValueChanged);
             // 
-            // maskedTextBoxInitialRudderDelay
-            // 
-            this.maskedTextBoxInitialRudderDelay.Location = new System.Drawing.Point(44, 161);
-            this.maskedTextBoxInitialRudderDelay.Name = "maskedTextBoxInitialRudderDelay";
-            this.maskedTextBoxInitialRudderDelay.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBoxInitialRudderDelay.TabIndex = 6;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(44, 142);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 13);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "InitialRudderDelay";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(203, 142);
+            this.label7.Location = new System.Drawing.Point(3, 149);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(128, 13);
+            this.label7.Size = new System.Drawing.Size(76, 13);
             this.label7.TabIndex = 9;
-            this.label7.Text = "ConsecutiveRudderDelay";
-            // 
-            // maskedTextBoxConsecutiveRudderDelay
-            // 
-            this.maskedTextBoxConsecutiveRudderDelay.Location = new System.Drawing.Point(203, 161);
-            this.maskedTextBoxConsecutiveRudderDelay.Name = "maskedTextBoxConsecutiveRudderDelay";
-            this.maskedTextBoxConsecutiveRudderDelay.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBoxConsecutiveRudderDelay.TabIndex = 8;
+            this.label7.Text = "Rudder Speed";
             // 
             // buttonSheetOut
             // 
@@ -264,33 +238,34 @@
             this.buttonConnect.UseVisualStyleBackColor = true;
             this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
             // 
-            // button1
+            // numericUpDownRudderSpeed
             // 
-            this.button1.Location = new System.Drawing.Point(337, 142);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(408, 161);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 24;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.numericUpDownRudderSpeed.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numericUpDownRudderSpeed.Location = new System.Drawing.Point(86, 149);
+            this.numericUpDownRudderSpeed.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownRudderSpeed.Name = "numericUpDownRudderSpeed";
+            this.numericUpDownRudderSpeed.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDownRudderSpeed.TabIndex = 23;
+            this.numericUpDownRudderSpeed.Value = new decimal(new int[] {
+            75,
+            0,
+            0,
+            0});
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(493, 193);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.numericUpDownRudderSpeed);
             this.Controls.Add(this.buttonConnect);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comboBoxCOMPort);
@@ -305,18 +280,19 @@
             this.Controls.Add(this.buttonSheetIn);
             this.Controls.Add(this.buttonSheetOut);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.maskedTextBoxConsecutiveRudderDelay);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.maskedTextBoxInitialRudderDelay);
             this.Controls.Add(this.trackBarRudder);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "FormMain";
             this.Text = "Boat Control";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormMain_KeyUp);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMain_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarRudder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRudderSpeed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,10 +305,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TrackBar trackBarRudder;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxInitialRudderDelay;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxConsecutiveRudderDelay;
         private System.Windows.Forms.Button buttonSheetOut;
         private System.Windows.Forms.Button buttonSheetIn;
         private System.Windows.Forms.Button buttonTrimIn;
@@ -347,8 +320,7 @@
         private System.Windows.Forms.Button buttonKeelPort;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button buttonConnect;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.NumericUpDown numericUpDownRudderSpeed;
     }
 }
 
