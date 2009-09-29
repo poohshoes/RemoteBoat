@@ -46,6 +46,9 @@ namespace BoatProjectCodeNovember
 
             port = new SerialPort(comboBoxCOMPort.SelectedItem.ToString(), 9600, Parity.None, 8, StopBits.One);
             port.Open();
+
+            comboBoxCOMPort.Enabled = false;
+            buttonConnect.Enabled = false;
         }
 
         ~FormMain()
@@ -76,7 +79,7 @@ namespace BoatProjectCodeNovember
         {
             if (port != null && port.IsOpen)
             {
-                string message = "%" + "0"//destinationChar(destinationId)
+                string message = "%" + "0"
                     + command1 + command2;
 
                 if (message.Length != 4)
@@ -88,7 +91,33 @@ namespace BoatProjectCodeNovember
 
         private char destinationChar(destinations destinationId) 
         {
-            return Convert.ToChar(((int)destinationId));
+            return Convert.ToChar((int)(char)destinationId);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (port != null && port.IsOpen)
+            {
+                string message = "%0" + Convert.ToChar(07) + Convert.ToChar(04);
+
+                if (message.Length != 4)
+                    throw new Exception("Message Length is not Four Characters!");
+
+                port.Write(message);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (port != null && port.IsOpen)
+            {
+                string message = "%0$\\";
+
+                if (message.Length != 4)
+                    throw new Exception("Message Length is not Four Characters!");
+
+                port.Write(message);
+            }
         }
     }
 }
