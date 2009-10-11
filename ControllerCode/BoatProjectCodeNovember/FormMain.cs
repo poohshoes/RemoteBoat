@@ -7,22 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using System.IO.Ports;
-
 namespace BoatProjectCodeNovember
 {
     public partial class FormMain : Form
     {
-        const char rudderId = '0';
-        const char topsailHoistId = '1';
+        ArduinoCommunicationHandler communicationHandler;
+        MotorControllerList motorControllerList;
 
-        SerialPort port;
+        const char rudderId = '0';
+        //const char topsailHoistId = '1';
 
         public FormMain()
         {
-            InitializeComponent(); 
-            
-            string[] portlist = SerialPort.GetPortNames();
+            InitializeComponent();
+
+            communicationHandler = new ArduinoCommunicationHandler();
+            motorControllerList = new MotorControllerList(communicationHandler);
+
+            string[] portlist = communicationHandler.getCOMPorts();
 
             foreach (String s in portlist)
             {
@@ -32,33 +34,14 @@ namespace BoatProjectCodeNovember
 
         private void buttonTrimIn_Click(object sender, EventArgs e)
         {
-            function();
         }
-
-        private void function() { }
 
         private void buttonConnect_Click(object sender, EventArgs e)
         {
-            if (port != null)
-            {
-                port.Close();
-                port.Dispose();
-            }
-
-            port = new SerialPort(comboBoxCOMPort.SelectedItem.ToString(), 9600, Parity.None, 8, StopBits.One);
-            port.Open();
+            communicationHandler.connectToCOMPort(comboBoxCOMPort.SelectedItem.ToString());
 
             comboBoxCOMPort.Enabled = false;
             buttonConnect.Enabled = false;
-        }
-
-        ~FormMain()
-        {
-            if (port != null)
-            {
-                port.Close();
-                port.Dispose();
-            }
         }
 
         private void trackBarRudder_ValueChanged(object sender, EventArgs e)
@@ -73,22 +56,8 @@ namespace BoatProjectCodeNovember
             pos_hi = (byte)(temp >> 7);     //shift bits 8 thru 13 by 7
             pos_low = (byte)((uint)trackBarRudder.Value & 0x7f); //get lower 7 bits of position
 
-            sendMessage(rudderId, (char)pos_hi, (char)pos_low);
-        }
-
-        private void sendMessage(char destinationId, char command1, char command2)
-        {
-            if (port != null && port.IsOpen)
-            {
-                string message = "%" + destinationId
-                    + command1 + command2;
-
-                if (message.Length != 4)
-                    throw new Exception("Message Length is not Four Characters!");
-
-                port.Write(message);
-            }
-        }
+            communicationHandler.sendMessage(rudderId, (char)pos_hi, (char)pos_low);
+        }        
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
@@ -110,27 +79,32 @@ namespace BoatProjectCodeNovember
             }
             else if (e.KeyCode == Keys.Space)
                 trackBarRudder.Value = ((trackBarRudder.Maximum - trackBarRudder.Minimum) / 2) + trackBarRudder.Minimum;
-            else if (e.KeyCode == Keys.E) 
-            {
-                sendMessage(topsailHoistId, 'n', 'l');
-            }
-            else if (e.KeyCode == Keys.D)
-            {
-                sendMessage(topsailHoistId, 'n', 'r');
-            }
+
+            motorControllerList.notifyMotorsOfKeyPress(e.KeyCode);
+            //else if (e.KeyCode == Keys.E) 
+            //{
+            //    sendMessage(topsailHoistId, 'n', 'l');
+            //}
+            //else if (e.KeyCode == Keys.D)
+            //{
+            //    sendMessage(topsailHoistId, 'n', 'r');
+            //}
 
         }
 
         private void FormMain_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.E) 
-            {
-                sendMessage(topsailHoistId, 'f', 'l');
-            }
-            else if (e.KeyCode == Keys.D) 
-            {
-                sendMessage(topsailHoistId, 'f', 'l');
-            }
-        }     
+            motorControllerList.notifyMotorsOfKeyRelease(e.KeyCode);
+            //if (e.KeyCode == Keys.E) 
+            //{
+            //    sendMessage(topsailHoistId, 'f', 'l');
+            //}
+            //else if (e.KeyCode == Keys.D) 
+            //{
+            //    sendMessage(topsailHoistId, 'f', 'l');
+            //}
+        }
+     
+
     }
 }

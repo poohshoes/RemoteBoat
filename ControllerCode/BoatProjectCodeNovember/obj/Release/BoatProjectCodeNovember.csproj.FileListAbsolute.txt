@@ -22,3 +22,11 @@ C:\Users\Ian\Documents\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Rel
 C:\Users\Ian\Documents\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Release\BoatProjectCodeNovember.csproj.GenerateResource.Cache
 C:\Users\Ian\Documents\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Release\BoatProjectCodeNovember.exe
 C:\Users\Ian\Documents\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Release\BoatProjectCodeNovember.pdb
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Release\BoatProjectCodeNovember.FormMain.resources
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Release\BoatProjectCodeNovember.Properties.Resources.resources
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Release\BoatProjectCodeNovember.csproj.GenerateResource.Cache
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Release\BoatProjectCodeNovember.exe
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Release\BoatProjectCodeNovember.pdb
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\bin\Release\BoatProjectCodeNovember.exe
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\bin\Release\BoatProjectCodeNovember.pdb

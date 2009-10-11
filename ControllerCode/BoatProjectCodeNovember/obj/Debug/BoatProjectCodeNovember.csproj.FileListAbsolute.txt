@@ -14,3 +14,11 @@ C:\Users\Ian\Documents\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Deb
 C:\Users\Ian\Documents\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Debug\BoatProjectCodeNovember.FormMain.resources
 C:\Users\Ian\Documents\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Debug\BoatProjectCodeNovember.Properties.Resources.resources
 C:\Users\Ian\Documents\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Debug\BoatProjectCodeNovember.csproj.GenerateResource.Cache
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Debug\BoatProjectCodeNovember.exe
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Debug\BoatProjectCodeNovember.pdb
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\bin\Debug\BoatProjectCodeNovember.exe
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\bin\Debug\BoatProjectCodeNovember.pdb
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Debug\BoatProjectCodeNovember.FormMain.resources
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Debug\BoatProjectCodeNovember.Properties.Resources.resources
+C:\Documents and Settings\ian\github\RemoteBoat\ControllerCode\BoatProjectCodeNovember\obj\Debug\BoatProjectCodeNovember.csproj.GenerateResource.Cache
