@@ -15,12 +15,6 @@ namespace BoatProjectCodeNovember
         List<Keys> rotateLeftKeys;
         List<Keys> rotateRightKeys;
 
-        // motor commands that are mirrored on the arduino board
-        const char motorOn = 'n';
-        const char motorOff = 'f';
-
-        const char rotateLeft = 'l';
-        const char rotateRight = 'r';
 
         public MotorController(char motorId, ArduinoCommunicationHandler communicationHandler,
             List<Keys> rotateLeftKeys, List<Keys> rotateRightKeys) 
@@ -47,18 +41,24 @@ namespace BoatProjectCodeNovember
 
         private void RotateLeft() 
         {
-            communicationHandler.sendMessage(motorId, motorOn, rotateLeft);
+            communicationHandler.sendMessage(motorId, 
+                ArduinoCommunicationHandler.MOTOR_ON, 
+                ArduinoCommunicationHandler.ROTATE_LEFT);
         }
 
         private void RotateRight()
         {
-            communicationHandler.sendMessage(motorId, motorOn, rotateRight);
+            communicationHandler.sendMessage(motorId, 
+                ArduinoCommunicationHandler.MOTOR_ON, 
+                ArduinoCommunicationHandler.ROTATE_RIGHT);
         }
 
         private void StopRotating() 
         {
             // note that rotateLeft is only a placeholder
-            communicationHandler.sendMessage(motorId, motorOff, rotateLeft);
+            communicationHandler.sendMessage(motorId, 
+                ArduinoCommunicationHandler.MOTOR_OFF, 
+                ArduinoCommunicationHandler.ROTATE_LEFT);
         }
     }
 }

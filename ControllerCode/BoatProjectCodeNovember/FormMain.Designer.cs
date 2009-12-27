@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,6 +50,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.buttonConnect = new System.Windows.Forms.Button();
             this.numericUpDownRudderSpeed = new System.Windows.Forms.NumericUpDown();
+            this.controllerUpdateTimer = new System.Windows.Forms.Timer(this.components);
+            this.controllerConnectedLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarRudder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRudderSpeed)).BeginInit();
             this.SuspendLayout();
@@ -260,11 +263,26 @@
             0,
             0});
             // 
+            // controllerUpdateTimer
+            // 
+            this.controllerUpdateTimer.Tick += new System.EventHandler(this.controllerUpdateTimer_Tick);
+            // 
+            // controllerConnectedLabel
+            // 
+            this.controllerConnectedLabel.AutoSize = true;
+            this.controllerConnectedLabel.ForeColor = System.Drawing.Color.Red;
+            this.controllerConnectedLabel.Location = new System.Drawing.Point(374, 133);
+            this.controllerConnectedLabel.Name = "controllerConnectedLabel";
+            this.controllerConnectedLabel.Size = new System.Drawing.Size(115, 13);
+            this.controllerConnectedLabel.TabIndex = 24;
+            this.controllerConnectedLabel.Text = "No Controller Detected";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(493, 193);
+            this.Controls.Add(this.controllerConnectedLabel);
             this.Controls.Add(this.numericUpDownRudderSpeed);
             this.Controls.Add(this.buttonConnect);
             this.Controls.Add(this.label8);
@@ -289,6 +307,7 @@
             this.KeyPreview = true;
             this.Name = "FormMain";
             this.Text = "Boat Control";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FormMain_KeyUp);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMain_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarRudder)).EndInit();
@@ -321,6 +340,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button buttonConnect;
         private System.Windows.Forms.NumericUpDown numericUpDownRudderSpeed;
+        private System.Windows.Forms.Timer controllerUpdateTimer;
+        private System.Windows.Forms.Label controllerConnectedLabel;
     }
 }
 

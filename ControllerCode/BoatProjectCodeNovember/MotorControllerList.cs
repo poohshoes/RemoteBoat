@@ -10,12 +10,6 @@ namespace BoatProjectCodeNovember
     {
         List<MotorController> motorControllers;
 
-        const char topsailHoistId = '1';
-        const char jibHoistId = '2';
-        const char topSailSheet = '3';
-        const char headSailSheet = '4';
-        const char mainSailSheet = '5';
-
         public MotorControllerList(ArduinoCommunicationHandler communicationHandler) 
         {
             motorControllers = new List<MotorController>();
@@ -23,7 +17,7 @@ namespace BoatProjectCodeNovember
             // create the motors
             motorControllers.Add(
                 new MotorController(
-                    topsailHoistId,
+                    ArduinoCommunicationHandler.TOP_SAIL_HOIST_ID,
                     communicationHandler,
                     new[] { Keys.E }.ToList(),
                     new[] { Keys.D }.ToList()
@@ -32,7 +26,7 @@ namespace BoatProjectCodeNovember
 
             motorControllers.Add(
                 new MotorController(
-                    jibHoistId,
+                    ArduinoCommunicationHandler.JIB_HOIST_ID,
                     communicationHandler,
                     new[] { Keys.R }.ToList(),
                     new[] { Keys.F }.ToList()
@@ -41,7 +35,7 @@ namespace BoatProjectCodeNovember
 
             motorControllers.Add(
                 new MotorController(
-                    topSailSheet,
+                    ArduinoCommunicationHandler.TOP_SAIL_SHEET,
                     communicationHandler,
                     new[] { Keys.Down, Keys.W }.ToList(),
                     new[] { Keys.Up, Keys.S }.ToList()
@@ -50,7 +44,7 @@ namespace BoatProjectCodeNovember
 
             motorControllers.Add(
                 new MotorController(
-                    headSailSheet,
+                    ArduinoCommunicationHandler.HEAD_SAIL_SHEET,
                     communicationHandler,
                     new[] { Keys.Up, Keys.Q }.ToList(),
                     new[] { Keys.Down, Keys.A }.ToList()
@@ -59,7 +53,7 @@ namespace BoatProjectCodeNovember
 
             motorControllers.Add(
                 new MotorController(
-                    mainSailSheet,
+                    ArduinoCommunicationHandler.MAIN_SAIL_SHEET,
                     communicationHandler,
                     new[] { Keys.Up }.ToList(),
                     new[] { Keys.Down }.ToList()
